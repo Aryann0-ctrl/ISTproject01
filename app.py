@@ -51,11 +51,12 @@ def _current_user_id() -> str:
 
 def _supabase_error(error: APIError):
     code = getattr(error, "code", None)
+    message = getattr(error, "message", str(error))
     if code == "23505":
         return _json_error("You are already registered for this event", 409)
     if code in {"23503", "PGRST116"}:
         return _json_error("Referenced record was not found", 404)
-    return _json_error("Database request failed", 500)
+    return jsonify({"error": "Database request failed", "code": code, "details": message}), 500
 
 
 @app.get("/")
