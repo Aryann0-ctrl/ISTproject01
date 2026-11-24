@@ -8,7 +8,7 @@ Flask backend for the event and registration API contract. It uses the existing 
 
 ## Run
 
-Copy `.env.example` to `.env` and set the Supabase values. The existing `.evn` file is also supported for compatibility. Set `SUPABASE_SECRET_KEY` for the server; otherwise the publishable key is used and Supabase must grant the `anon` role the required table privileges.
+Copy `.env.example` to `.env` and set the Supabase values. The existing `.evn` file is also supported for compatibility. Set `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY` for the server; otherwise the publishable key is used and Supabase must grant the `anon` role the required table privileges.
 
 ```powershell
 .\venv\Scripts\Activate.ps1

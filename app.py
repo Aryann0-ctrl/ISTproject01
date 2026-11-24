@@ -27,7 +27,11 @@ def _required_setting(name: str) -> str:
     return value
 
 
-supabase_key = os.getenv("SUPABASE_SECRET_KEY") or _required_setting("SUPABASE_PUBLISHABLE_KEY")
+supabase_key = (
+    os.getenv("SUPABASE_SECRET_KEY")
+    or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    or _required_setting("SUPABASE_PUBLISHABLE_KEY")
+)
 supabase: Client = create_client(_required_setting("SUPABASE_URL"), supabase_key)
 
 
