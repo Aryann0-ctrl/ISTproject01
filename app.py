@@ -14,6 +14,12 @@ load_dotenv(".evn")
 app = Flask(__name__)
 
 
+@app.errorhandler(Exception)
+def handle_unexpected_error(error: Exception):
+    app.logger.exception("Unhandled application error", exc_info=error)
+    return jsonify({"error": "Internal server error"}), 500
+
+
 def _required_setting(name: str) -> str:
     value = os.getenv(name)
     if not value:
