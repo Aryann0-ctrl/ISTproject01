@@ -17,7 +17,9 @@ python app.py
 
 ## Deploy to Render
 
-This repository includes `render.yaml`. Create a Render Blueprint from the repository, then set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the service environment. Render supplies `PORT` automatically, and the production command is `gunicorn app:app`.
+This repository includes `render.yaml` and a `Procfile`. Create a Render Blueprint from the repository, then set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the service environment. Render supplies `PORT` automatically, and the production command must be `gunicorn app:app`.
+
+If the Render service was created manually and still shows `gunicorn your_application.wsgi`, replace its Start Command with `gunicorn app:app` in Settings, save, and redeploy.
 
 Authentication is intentionally not enabled yet. The registration and private attendee endpoints identify the caller with an `X-User-Id` UUID header. This is a temporary development mechanism, not an authentication boundary.
 
