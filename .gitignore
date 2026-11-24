@@ -1,0 +1,11 @@
+.evn
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.aider-desk/
+.agents/
+.codex/
+.pytest_cache/
+.vscode/
